@@ -1,0 +1,4 @@
+{
+  "types": ["bun-types"],
+  "extends": "astro/tsconfigs/strict"
+}

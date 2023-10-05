@@ -1,0 +1,23 @@
+---
+import Info from "../components/Info.astro";
+import ServerSays from "../components/ServerSays.astro";
+const
+    request = Astro.request,
+    response = Astro.response,
+    body = await request.text(),
+    username = body
+        .split("username=")
+        .at(1);
+
+let ok = false;
+if (username <= 0) console.error(`[${Astro.request.referrer}] [Got nothing!]`);
+else {
+    console.info(`[${Astro.request.referrer}] ${username}`)
+    ok = true;
+    response.headers.append("HX-Push-Url", "login");
+    response.headers.append("Set-Cookie", `username=${username}`)
+}
+---
+
+{ok && <ServerSays id="info" class="text-center w-full" hx-get="/chats" hx-target="body" hx-push-url="true" hx-trigger="load">Ok, redirecting...</ServerSays>}
+{!ok && <ServerSays id="info" class="text-center w-full">No 😠<br/> I want a name</ServerSays>}

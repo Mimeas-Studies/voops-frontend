@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import Info from "../components/Info.astro";
+import ServerSays from "../components/ServerSays.astro";
+
+const title = "Voops"
+---
+
+<Base title={title}>
+	<main
+		class:list= {[
+		"w-screen",
+		"h-screen",
+		"flex",
+		"flex-col",
+		"justify-start",
+		"items-center",
+
+		"text-base-100",
+		"bg-primary",
+		]}
+	>
+		<h1 class:list={[
+			"text-6xl",
+			"pt-8",
+		]}
+		>{title}</h1>
+		<form
+
+			hx-post="login"
+			hx-swap="outerHTML"
+			hx-target="#info"
+			hx-include="[name=username]"
+
+			class:list={[
+			"mt-10",
+			"flex",
+			"flex-col",
+			"items-center",
+			"text-base-content",
+			"space-y-4"
+		]}>
+			<div id="info"/>
+			<input
+				name="username"
+				type="text"
+				placeholder="Your name..."
+				class:list={[
+					"input",
+					"input-bordered"
+				]}
+			/>
+			<button
+				type="submit"
+				class="btn btn-ghost"
+			>That's me!</button>
+		</form>
+	</main>
+</Base>

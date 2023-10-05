@@ -1,0 +1,25 @@
+{
+  "name": "frontend",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "clean": "rm -r node_modules dist"
+  },
+  "dependencies": {
+    "@astrojs/node": "^6.0.0",
+    "@astrojs/tailwind": "^5.0.0",
+    "@cloudamqp/amqp-client": "^3.1.1",
+    "astro": "^3.0.8",
+    "bun-types": "^1.0.1",
+    "htmx.org": "^1.9.5",
+    "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "daisyui": "^3.7.0"
+  }
+}

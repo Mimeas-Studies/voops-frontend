@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Info from "../components/Info.astro";
+---
+
+<Base title="Welcome to Component lab.">
+	<main
+		class:list = {[
+			"w-full",
+			"h-screen",
+			"bg-base-100",
+
+			// centering a component
+			"flex",
+			"items-center",
+			"justify-center",
+		]}
+	>
+		<div class="hidden">Awaiting a component...</div>
+		<Info title="An informative bit">
+			Whaaaaa?
+		</Info>
+	</main>
+</Base>

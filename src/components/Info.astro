@@ -1,0 +1,25 @@
+---
+interface Props {
+    title?: string,
+    hidden?: boolean,
+    class?: string,
+}
+const {title, hidden=false, class, ...props} = Astro.props
+---
+
+<span {...props} class:list={[
+    "card",
+    "card-bordered",
+    "card-compact",
+    "bg-info",
+    "text-info-content",
+    "rounded-xl",
+    "px-4",
+    "py-2",
+    hidden && "hidden",
+    Astro.props.class
+]}
+>
+    <h1 class="card-title">{title}</h1>
+    <slot/>
+</span>
