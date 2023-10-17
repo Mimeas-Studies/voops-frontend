@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: latest
-      - run |
+      - run: |
           npm install
           npx astro install
           npx astro build
