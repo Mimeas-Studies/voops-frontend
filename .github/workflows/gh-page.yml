@@ -22,6 +22,8 @@ jobs:
           path: dist/
   commit-to-orgpage:
     runs-on: ubuntu-latest
+    needs:
+      - build-and-artifact
     steps:
       - uses: actions/checkout@v3
         with:
@@ -29,7 +31,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: site
-          path: ./
       - run: | 
           git -am "update caused by${{github.ref_name}}"
           git push
