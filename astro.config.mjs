@@ -8,12 +8,9 @@ const port = parseInt(process.env.PORT);
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  output: "server",
+  output: "static",
   server: {
     host: true,
     port: isNaN(port)?8080:port
   },
-  adapter: node({
-    mode: "standalone"
-  })
 });

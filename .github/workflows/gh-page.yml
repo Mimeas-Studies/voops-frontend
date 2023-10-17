@@ -1,0 +1,33 @@
+on:
+  push: master
+  workflow_dispatch:
+
+jobs:
+  build-and-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+      - run |
+          npm install
+          npx astro install
+          npx astro build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: site
+          path: dist/
+  commit-to-orgpage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: orgpage
+      - uses: actions/download-artifact@v3
+        with:
+          name: site
+          path: ./
+      - run: | 
+          git -am "update caused by${{github.ref_name}}"
+          git push
